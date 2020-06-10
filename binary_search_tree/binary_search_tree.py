@@ -19,20 +19,48 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value < self.value:
+            if self.left is None:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
 
+        if target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
+        
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+        if self.left:
+            self.left.for_each(fn)
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
@@ -61,3 +89,26 @@ class BSTNode:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+# Guided
+
+# class BSTNodeGuided:
+#     def __init__(self, value):
+#         self.value = value
+#         self.left = None
+#         self.right = None
+    
+#     def insert(self,value):
+#         if value < self.value:
+#             if self.left is None:
+#                 self.left = BSTNodeGuided(value)
+#             else:
+#                 self.left.insert(value)
+    
+#     def contains(self, target):
+#         pass
+
+
+    # ken's advice
+    # linked list is node connected to node. binary search tree is a node connected to a maximum of two nodes
