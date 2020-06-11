@@ -67,17 +67,62 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # Lowest number is always the furthest
+        # to the left
+
+        # base case ?
+        # if node is None:
+        #     return
+        # if node is None?
+
+        #recursive case?
+        if node is None:
+            print('Tree is empty')
+        else:
+            self.in_order_print(node.left)
+            print(self.value)
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        queue = []
+
+        queue.append(node)
+
+        while len(queue) > 0:
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        # queue = []
+        # if node:
+        #     queue.append(node)
+        # while len(queue) > 0:
+        #     if queue[0].left:
+        #         queue.append(queue[0].left)
+        #     if queue[0].right:
+        #         queue.append(queue[0].right)
+        #     removed = queue.pop(0).value
+        #     print(removed)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = []
+
+        if node:
+            stack.append(node)
+            while len(stack) > 0:
+                popped = stack.pop()
+
+                if popped.right:
+                    stack.push(popped.right)
+                if popped.left:
+                    stack.push(popped.left)
+                
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required
